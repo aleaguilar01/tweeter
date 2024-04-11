@@ -31,7 +31,6 @@ body {
 */
 .container {
   width: 90%;
-  background-color: #f4f1ec;
-  margin-left: 5%;
-  margin-right: 5%;
+  background-color: inherit;
+  margin: 0 auto
 }
