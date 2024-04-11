@@ -1,9 +1,12 @@
+/**
+* Styling for header 
+*/
 header {
   padding-top: 120px;
   height: 520px;
   width: 100vw;
-  background-color: #D4C2FC;
-  background-image: url("../images/purty-wood.png");
+  background-color: #dadba8;
+  background-image: url("../images/brick-wall-dark.png");
   display: flex;
   justify-content: center;
   align-items: center;
