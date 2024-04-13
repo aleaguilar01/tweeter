@@ -4,9 +4,8 @@
 .new-tweet-form {
   display: flex;
   flex-direction: column;
-  display: flex;
   font-family: "Source Sans 3", sans-serif;
-  font-size:xx-large;
+  font-size: 1em;
   font-weight: bold;
 }
 
@@ -31,4 +30,5 @@
 .tweet-button {
   background-color:#4056A1;
   color: white;
+  padding: 0.2em
 }
