@@ -37,3 +37,7 @@
 .tweet-button:hover {
   background-color: #4f6bce;
 }
+
+.error {
+  color: red
+}
