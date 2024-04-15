@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
-    
+    <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -36,12 +36,12 @@
       
       <div class="nav-tweet">
         <span>  <b>Write</b> a new tweet </span> 
-        <i class="fa fa-solid fa-angles-down"></i>
+        <i class="fa fa-solid fa-angles-down arrow-style"></i>
       </div>
 
     </nav>
 
-    <header>
+    <header class="user_header">
       <div>
           <img src="/images/profile-hex.png"> 
       </div>
@@ -64,6 +64,30 @@
           </footer>
         </form>
       </section>
+      <div>
+        <article class="tweet"> 
+          <header>
+            <div class="profile">
+              <img src="/images/woman.png"> 
+              Aelin Galathinius
+            </div>
+            <div class="user_id">
+              @aleinisthebest
+            </div>
+          </header>
+          <p>
+            Breathing Fire!
+          </p>
+          <footer>
+            <p>1 day ago</p>
+            <div>
+              <i class="fa-solid fa-flag"></i>
+              <i class="fa-solid fa-repeat"></i>
+              <i class="fa-solid fa-heart"></i>
+            </div>
+          </footer>
+        </article>
+      </div>
     </main>
     <script src="/scripts/composer-char-counter.js"></script>
   </body>
