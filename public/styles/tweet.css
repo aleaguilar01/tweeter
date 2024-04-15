@@ -1,3 +1,6 @@
+/**
+* Styling for the tweets 
+*/
 
 .tweet{
   margin-bottom: 5%;
@@ -14,7 +17,7 @@
 .tweet header {
   display: flex;
   justify-content: space-between;
-  color: rgb(99, 13, 99)
+  color: #630d63
 }
 
 .profile {
@@ -47,5 +50,5 @@
 }
 
 .tweet footer div :hover {
-  color:rgb(99, 13, 99)
+  color:#630d63
 }
