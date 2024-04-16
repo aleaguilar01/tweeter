@@ -4,6 +4,10 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+
+/**
+ * Hardcoded data for tweets.
+ */
 const data = [
   {
     "user": {
@@ -50,6 +54,11 @@ const data = [
 
 
 $(() => {
+  /**
+   * Function to create HTML tweets,
+   * @param {*} tweet
+   * @returns html
+   */
   const createTweetElement = (tweet) => {
     //const newTweet = $(`<article class="tweet"> ${tweet.content.text} </article>`);
     const newTweet = $(`
@@ -79,7 +88,10 @@ $(() => {
     return newTweet;
   };
   
-
+  /**
+   * Function to render tweets data
+   * @param {*} data
+   */
   const renderTweets = (data) => {
     for (let tweet in data) {
       $('#tweet-container').append(createTweetElement(data[tweet]));
