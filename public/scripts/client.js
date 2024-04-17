@@ -4,111 +4,82 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+$(() => {
+  loadTweets();
+  $("#submit-tweet").on("submit", onSubmit);
+});
+
+/////////////////////////////////////HELPER FUNCTIONS/////////////////////////////////////////////////////////
 
 /**
- * Hardcoded data for tweets.
+ * function that fetches tweets from backend and appends them to the HTML.
  */
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  },
-  {
-    "user": {
-      "name": "Feyre Cursebreaker",
-      "avatars": "https://static.wikia.nocookie.net/acourtoforiginalvampireacademies/images/c/ca/Feyre_.jpeg",
-      "handle": "@highlady" },
-    "content": {
-      "text": "To the stars..."
-    },
-    "created_at": 1461113959088
-  },
-  {
-    "user": {
-      "name": "Aelin Galathinius",
-      "avatars": "https://static.wikia.nocookie.net/thethroneofglass/images/1/1d/Aelin_by_Morgana0anagrom.jpg",
-      "handle": "@firehaert" },
-    "content": {
-      "text": "You do not yield."
-    },
-    "created_at": 1461113959088
-  }
-];
+const loadTweets = function () {
+  console.log("here")
+  $.get("/tweets")
+    .then((data) => {
+      renderTweets(data);
+    });
+};
 
-
-$(() => {
-  /**
+/**
    * Function to create HTML tweets,
    * @param {*} tweet
    * @returns html
    */
-  const createTweetElement = (tweet) => {
-    //const newTweet = $(`<article class="tweet"> ${tweet.content.text} </article>`);
-    const newTweet = $(`
-        <article class="tweet"> 
-        <header>
-          <div class="profile">
-            <img src="${tweet.user.avatars}"> 
-            <span>${tweet.user.name}</span>
-          </div>
-          <div class="user_id">
-            <span>${tweet.user.handle}</span>
-          </div>
-        </header>
-        <p>
-          ${tweet.content.text}
-        </p>
-        <footer>
-          <p>${tweet.created_at}</p>
-          <div>
-            <i class="fa-solid fa-flag"></i>
-            <i class="fa-solid fa-repeat"></i>
-            <i class="fa-solid fa-heart"></i>
-          </div>
-        </footer>
-      </article>
-    `)
-    return newTweet;
-  };
-  
-  /**
-   * Function to render tweets data
-   * @param {*} data
-   */
-  const renderTweets = (data) => {
-    for (let tweet in data) {
-      $('#tweet-container').append(createTweetElement(data[tweet]));
-    }
-    
-  };
+const createTweetElement = (tweet) => {
+  const newTweet = $(`
+      <article class="tweet"> 
+      <header>
+        <div class="profile">
+          <img src="${tweet.user.avatars}"> 
+          <span>${tweet.user.name}</span>
+        </div>
+        <div class="user_id">
+          <span>${tweet.user.handle}</span>
+        </div>
+      </header>
+      <p>
+        ${tweet.content.text}
+      </p>
+      <footer>
+        <p>${timeago.format(tweet.created_at)}</p>
+        <div>
+          <i class="fa-solid fa-flag"></i>
+          <i class="fa-solid fa-repeat"></i>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+      </footer>
+    </article>
+  `);
+  return newTweet;
+};
 
-  renderTweets(data);
+/**
+ * Function to render tweets data
+ * @param {*} tweets
+ */
+const renderTweets = (tweets) => {
+  const container = $("#tweet-container");
 
-});
+  for (let tweet of tweets) {
+    const element = createTweetElement(tweet);
+    container.append(element);
+  }
+};
 
+/**
+ * Callback/handler function that is passed to the event listener of submit form.
+ * @param {*} event
+ */
+const onSubmit = function (event) {
+  event.preventDefault();
 
+  const serializedForm = $(this).serialize();
+  console.log(serializedForm);
 
-
-
-
-
-
-
-
+  $.post("/tweets", serializedForm)
+    .then(() => {
+      console.log('Tweet sent');
+    });
+}
