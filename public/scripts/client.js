@@ -61,13 +61,16 @@ const renderTweets = (tweets) => {
  * Callback/handler function that is passed to the event listener of submit form.
  * @param {*} event
  */
-const onSubmit = function(event) {
+const onSubmit = function (event) {
   event.preventDefault();
-
+  const container = $("#tweet-container");
   const serializedForm = $(this).serialize();
   const tweetText = $(".tweet-text").val();
   if (isTweetValid(tweetText)) {
     $.post("/tweets", serializedForm)
+      .then(() => {
+        container.empty();
+      })
       .then(() => {
         $(this).find(".tweet-text").val("");
         $(this).find(".counter").text("140");
@@ -84,7 +87,7 @@ const onSubmit = function(event) {
  * Function to validate if a tweet is valid based on character count.
  * @returns boolean
  */
-const isTweetValid = function(tweetText) {
+const isTweetValid = function (tweetText) {
   if (tweetText === "") {
     alert("Oops! It seems like you're trying to send a tweet without any text. Our birds are quite picky eaters and they demand some words to chirp about. Please add some text to your tweet before sending it!");
     return false;
@@ -99,7 +102,7 @@ const isTweetValid = function(tweetText) {
 /**
  * function that fetches tweets from backend and appends them to the HTML.
  */
-const loadTweets = function() {
+const loadTweets = function () {
   $.get("/tweets")
     .then((data) => {
       renderTweets(data);
