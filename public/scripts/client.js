@@ -11,6 +11,12 @@ $(() => {
 
 /////////////////////////////////////HELPER FUNCTIONS/////////////////////////////////////////////////////////
 
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 /**
    * Function to create HTML tweets,
    * @param {*} tweet
@@ -29,7 +35,7 @@ const createTweetElement = (tweet) => {
         </div>
       </header>
       <p>
-        ${tweet.content.text}
+        ${escape(tweet.content.text)}
       </p>
       <footer>
         <p>${timeago.format(tweet.created_at)}</p>
@@ -64,7 +70,7 @@ const renderTweets = (tweets) => {
 const onSubmit = function (event) {
   event.preventDefault();
   const container = $("#tweet-container");
-  const serializedForm = $(this).serialize();
+  const serializedForm = $(this).serialize()
   const tweetText = $(".tweet-text").val();
   if (isTweetValid(tweetText)) {
     $.post("/tweets", serializedForm)
