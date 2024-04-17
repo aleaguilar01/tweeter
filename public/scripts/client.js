@@ -65,19 +65,25 @@ const onSubmit = function (event) {
   event.preventDefault();
 
   const serializedForm = $(this).serialize();
-  console.log(serializedForm);
-
-  $.post("/tweets", serializedForm)
-    .then(() => {
-      $(this).find(".tweet-text").val("");
-      $(this).find(".counter").text("140");
-      loadTweets();
-      console.log('Tweet sent');
-    })
-    .catch(error) => {
-      console.error('Error submitting tweets:', error);
-    }
-}
+  const tweetText = $(".tweet-text").val();
+  if (tweetText === "") {
+    alert("Oops! It seems like you're trying to send a tweet without any text. Our birds are quite picky eaters and they demand some words to chirp about. Please add some text to your tweet before sending it!");
+  } else if (tweetText.length > 140) {
+    alert("Oh dear! It looks like you're trying to squeeze in more than the allowed 140 characters. Our little birdies have delicate ears and can only handle so much chatter. Please trim down your tweet to keep our aviary harmonious!");
+  } else {
+    $.post("/tweets", serializedForm)
+      .then(() => {
+        $(this).find(".tweet-text").val("");
+        $(this).find(".counter").text("140");
+        $(this).find(".counter").removeClass("counter-red");
+        loadTweets();
+        console.log('Tweet sent');
+      })
+      .catch((error) => {
+        console.error('Error submitting tweets:', error);
+      });
+  }
+};
 
 /**
  * function that fetches tweets from backend and appends them to the HTML.
@@ -87,7 +93,7 @@ const loadTweets = function () {
     .then((data) => {
       renderTweets(data);
     })
-    .catch(error) {
+    .catch((error) => {
       console.log('Error loading tweets:', error)
-    }
+    });
 };
