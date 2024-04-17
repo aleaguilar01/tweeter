@@ -12,17 +12,6 @@ $(() => {
 /////////////////////////////////////HELPER FUNCTIONS/////////////////////////////////////////////////////////
 
 /**
- * function that fetches tweets from backend and appends them to the HTML.
- */
-const loadTweets = function () {
-  console.log("here")
-  $.get("/tweets")
-    .then((data) => {
-      renderTweets(data);
-    });
-};
-
-/**
    * Function to create HTML tweets,
    * @param {*} tweet
    * @returns html
@@ -64,7 +53,7 @@ const renderTweets = (tweets) => {
 
   for (let tweet of tweets) {
     const element = createTweetElement(tweet);
-    container.append(element);
+    container.prepend(element);
   }
 };
 
@@ -80,6 +69,25 @@ const onSubmit = function (event) {
 
   $.post("/tweets", serializedForm)
     .then(() => {
+      $(this).find(".tweet-text").val("");
+      $(this).find(".counter").text("140");
+      loadTweets();
       console.log('Tweet sent');
-    });
+    })
+    .catch(error) => {
+      console.error('Error submitting tweets:', error);
+    }
 }
+
+/**
+ * function that fetches tweets from backend and appends them to the HTML.
+ */
+const loadTweets = function () {
+  $.get("/tweets")
+    .then((data) => {
+      renderTweets(data);
+    })
+    .catch(error) {
+      console.log('Error loading tweets:', error)
+    }
+};
