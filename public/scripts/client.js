@@ -61,39 +61,51 @@ const renderTweets = (tweets) => {
  * Callback/handler function that is passed to the event listener of submit form.
  * @param {*} event
  */
-const onSubmit = function (event) {
+const onSubmit = function(event) {
   event.preventDefault();
 
   const serializedForm = $(this).serialize();
   const tweetText = $(".tweet-text").val();
-  if (tweetText === "") {
-    alert("Oops! It seems like you're trying to send a tweet without any text. Our birds are quite picky eaters and they demand some words to chirp about. Please add some text to your tweet before sending it!");
-  } else if (tweetText.length > 140) {
-    alert("Oh dear! It looks like you're trying to squeeze in more than the allowed 140 characters. Our little birdies have delicate ears and can only handle so much chatter. Please trim down your tweet to keep our aviary harmonious!");
-  } else {
+  if (isTweetValid()) {
     $.post("/tweets", serializedForm)
       .then(() => {
         $(this).find(".tweet-text").val("");
         $(this).find(".counter").text("140");
         $(this).find(".counter").removeClass("counter-red");
         loadTweets();
-        console.log('Tweet sent');
       })
       .catch((error) => {
-        console.error('Error submitting tweets:', error);
+        alert('Error submitting tweets:', error);
       });
   }
 };
 
 /**
+ * Function to validate if a tweet is valid based on character count.
+ * @returns boolean
+ */
+const isTweetValid = function() {
+  const tweetText = $(".tweet-text").val().trim();
+  if (tweetText === "") {
+    alert("Oops! It seems like you're trying to send a tweet without any text. Our birds are quite picky eaters and they demand some words to chirp about. Please add some text to your tweet before sending it!");
+    return false;
+  }
+  if (tweetText.length > 140) {
+    alert("Oh dear! It looks like you're trying to squeeze in more than the allowed 140 characters. Our little birdies have delicate ears and can only handle so much chatter. Please trim down your tweet to keep our aviary harmonious!");
+    return false;
+  }
+  return true;
+};
+
+/**
  * function that fetches tweets from backend and appends them to the HTML.
  */
-const loadTweets = function () {
+const loadTweets = function() {
   $.get("/tweets")
     .then((data) => {
       renderTweets(data);
     })
     .catch((error) => {
-      console.log('Error loading tweets:', error)
+      alert('Error loading tweets:', error);
     });
 };
