@@ -66,7 +66,7 @@ const onSubmit = function(event) {
 
   const serializedForm = $(this).serialize();
   const tweetText = $(".tweet-text").val();
-  if (isTweetValid()) {
+  if (isTweetValid(tweetText)) {
     $.post("/tweets", serializedForm)
       .then(() => {
         $(this).find(".tweet-text").val("");
@@ -84,8 +84,7 @@ const onSubmit = function(event) {
  * Function to validate if a tweet is valid based on character count.
  * @returns boolean
  */
-const isTweetValid = function() {
-  const tweetText = $(".tweet-text").val().trim();
+const isTweetValid = function(tweetText) {
   if (tweetText === "") {
     alert("Oops! It seems like you're trying to send a tweet without any text. Our birds are quite picky eaters and they demand some words to chirp about. Please add some text to your tweet before sending it!");
     return false;
