@@ -15,14 +15,16 @@ $(() => {
  */
 const slideForm = function() {
   const newTweetForm = $("#form-toggle");
-  newTweetForm.slideToggle("slow");
+  newTweetForm.slideToggle("slow", ()=> {
+    $(".tweet-text").focus();
+  });
 };
 
 
 /**
  * Function to protect XSS
- * @param {*} str 
- * @returns 
+ * @param {*} str
+ * @returns
  */
 const escape = function(str) {
   let div = document.createElement("div");
