@@ -1,12 +1,17 @@
 /** Styling for New Tweet component
 */
 
+#form-toggle {
+  display: none;
+}
+
 .new-tweet-form {
   display: flex;
   flex-direction: column;
   font-family: "Source Sans 3", sans-serif;
   font-size: 1em;
   font-weight: bold;
+  padding-top: 3%;
 }
 
 

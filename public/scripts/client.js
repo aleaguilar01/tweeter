@@ -1,17 +1,30 @@
 /*
  * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
 $(() => {
   loadTweets();
   $("#submit-tweet").on("submit", onSubmit);
+  $("#new-tweet-btn").on("click", slideForm);
 });
 
 /////////////////////////////////////////////////////////////////////HELPER FUNCTIONS /////////////////////////////////////////////////////////
 
-const escape = function (str) {
+/**
+ * Function to togle new tweet form.
+ */
+const slideForm = function() {
+  const newTweetForm = $("#form-toggle");
+  newTweetForm.slideToggle("slow");
+};
+
+
+/**
+ * Function to protect XSS
+ * @param {*} str 
+ * @returns 
+ */
+const escape = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
@@ -67,7 +80,7 @@ const renderTweets = (tweets) => {
  * Callback/handler function that is passed to the event listener of submit form.
  * @param {*} event
  */
-const onSubmit = function (event) {
+const onSubmit = function(event) {
   event.preventDefault();
   const container = $("#tweet-container");
   const errorContainer = $("#error-message");
@@ -99,9 +112,9 @@ const onSubmit = function (event) {
  * Function to validate if a tweet is valid based on character count.
  * @returns boolean
  */
-const isTweetValid = function (tweetText) {
-  const tweetTooLong = "<img src='https://i.imgur.com/GnyDvKN.png'> <p>Oh dear! It looks like you're trying to squeeze in more than the allowed 140 characters. Our little birdies have delicate ears and can only handle so much chatter. Please trim down your tweet to keep our aviary harmonious!</p>"
-  const noTweet = "<img src='https://i.imgur.com/GnyDvKN.png'> <p>Oops! It seems like you're trying to send a tweet without any text. Our birds are quite picky eaters and they demand some words to chirp about. Please add some text to your tweet before sending it!</p>"
+const isTweetValid = function(tweetText) {
+  const tweetTooLong = "<img src='https://i.imgur.com/GnyDvKN.png'> <p>Oh dear! It looks like you're trying to squeeze in more than the allowed 140 characters. Our little birdies have delicate ears and can only handle so much chatter. Please trim down your tweet to keep our aviary harmonious!</p>";
+  const noTweet = "<img src='https://i.imgur.com/GnyDvKN.png'> <p>Oops! It seems like you're trying to send a tweet without any text. Our birds are quite picky eaters and they demand some words to chirp about. Please add some text to your tweet before sending it!</p>";
   if (tweetText === "") {
     errorMessage(noTweet);
     return false;
@@ -117,7 +130,7 @@ const isTweetValid = function (tweetText) {
  * Function that handles the behaviour of error messages.
  * @param {*} errorText
  */
-const errorMessage = function (errorText) {
+const errorMessage = function(errorText) {
   const container = $("#error-message");
   container.empty();
   container.append(errorText);
@@ -127,7 +140,7 @@ const errorMessage = function (errorText) {
 /**
  * function that fetches tweets from backend and appends them to the HTML.
  */
-const loadTweets = function () {
+const loadTweets = function() {
   $.get("/tweets")
     .then((data) => {
       renderTweets(data);
