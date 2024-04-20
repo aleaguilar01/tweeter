@@ -76,3 +76,31 @@ nav {
   animation-name: bounce;
   -moz-animation-name: bounce;
 }
+
+#container-second-toggle-btn {
+  display: none;
+}
+
+#second-toggle-btn {
+  
+  background-color: red;
+  border-style: none;
+  border-radius: 50%;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 50px;
+  margin: 10px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+#second-toggle-btn:hover {
+  cursor: pointer;
+}
+
+#second-toggle-btn i {
+  color: white;
+}

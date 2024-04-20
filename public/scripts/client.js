@@ -6,9 +6,39 @@ $(() => {
   loadTweets();
   $("#submit-tweet").on("submit", onSubmit);
   $("#new-tweet-btn").on("click", slideForm);
+  $("#second-toggle-btn").on("click", function() {
+    slideForm();
+    window.scrollTo({
+      top:0,
+      left:0,
+      behavior: "smooth"
+    });
+    $("#container-second-toggle-btn").fadeOut();
+  });
+  $(window).on("scroll", toggleButton);
 });
 
 /////////////////////////////////////////////////////////////////////HELPER FUNCTIONS /////////////////////////////////////////////////////////
+
+let lastScrollTop = 0;
+let isScrollingDown = false;
+
+const toggleButton = function() {
+  const toggleButton = $("#container-second-toggle-btn");
+  const currentScrollTop = $(this).scrollTop();
+  
+  if (currentScrollTop > lastScrollTop) {
+    toggleButton.fadeIn();
+    isScrollingDown = true;
+  } else {
+    if (!isScrollingDown) {
+      toggleButton.fadeOut();
+    }
+    isScrollingDown = false;
+  }
+  
+  lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+};
 
 /**
  * Function to togle new tweet form.
