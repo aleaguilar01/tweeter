@@ -5,7 +5,7 @@
 nav {
   height: 120px;
   width: 100vw;
-  background-color: #4056A1;
+  background-color: #369096;
   color: #FFFFFF;
   padding-left: 1.5em;
   padding-right: 1.5em;
@@ -22,7 +22,7 @@ nav {
 }
 
 .arrow-style {
-  color: red;
+  color: #630d63;
 
  }
 
@@ -83,7 +83,7 @@ nav {
 
 #second-toggle-btn {
   
-  background-color: red;
+  background-color: #630d63;
   border-style: none;
   border-radius: 50%;
   padding: 20px;
@@ -103,4 +103,15 @@ nav {
 
 #second-toggle-btn i {
   color: white;
+}
+
+
+/* Desktop styles */
+@media only screen and (min-width: 1024px) {
+  
+
+  nav {
+    background-color: #4056A1;
+  }
+  
 }
