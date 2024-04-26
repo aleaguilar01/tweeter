@@ -2,7 +2,8 @@ const MAX_CHARS = 140;
 
 $(() => {
   /**
-   * function to initialize the character count for the text area, listening for the input and updating the display.
+   * function to initialize the character count for the text area,
+   * listening for the input and updating the display.
    */
   $(".tweet-text").on("input" , function() {
     let remainingChars = MAX_CHARS - $(this).val().length;

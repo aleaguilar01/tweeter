@@ -9,7 +9,7 @@ nav {
   @include flexbox($justify:space-between);
   height: 120px;
   width: 100vw;
-  background-color: $aqua-color;
+  background-color: $blue-color;
   color: $white-color;
   padding-left: 1.5em;
   padding-right: 1.5em;
@@ -18,7 +18,7 @@ nav {
 }
 
 .nav-title {
-  font-family: $font;
+  font-family: $btn-font;
 }
 
 .arrow-style {
@@ -100,7 +100,7 @@ nav {
 @media only screen and (min-width: 1024px) {
   
   nav {
-    background-color: $blue-color;
+    background-color: $aqua-color;
   }
   
 }

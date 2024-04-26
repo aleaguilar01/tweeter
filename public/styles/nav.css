@@ -8,7 +8,7 @@ nav {
   align-items: center;
   height: 120px;
   width: 100vw;
-  background-color: #369096;
+  background-color: #4056A1;
   color: white;
   padding-left: 1.5em;
   padding-right: 1.5em;
@@ -17,7 +17,7 @@ nav {
 }
 
 .nav-title {
-  font-family: "Source Sans 3", sans-serif;
+  font-family: "Bungee";
 }
 
 .arrow-style {
@@ -106,6 +106,6 @@ nav {
 /* Desktop styles */
 @media only screen and (min-width: 1024px) {
   nav {
-    background-color: #4056A1;
+    background-color: #369096;
   }
 }

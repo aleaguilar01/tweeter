@@ -12,6 +12,7 @@
   width: 100vw;
   background-color: $aqua-color; 
   background-image: url("../images/brick-wall-dark.png");
+  margin-bottom: 1em;
 }
 
 /* Desktop styles */
@@ -19,7 +20,7 @@
   
 
   .user_header {
-    background-color: $blue-color;
+    background-color: $aqua-color;
     color: $white-color;
   }
 }

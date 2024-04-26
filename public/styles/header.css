@@ -11,12 +11,13 @@
   width: 100vw;
   background-color: #369096;
   background-image: url("../images/brick-wall-dark.png");
+  margin-bottom: 1em;
 }
 
 /* Desktop styles */
 @media only screen and (min-width: 1024px) {
   .user_header {
-    background-color: #4056A1;
+    background-color: #369096;
     color: white;
   }
 }
