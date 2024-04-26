@@ -1,22 +1,25 @@
 /**
 * Styling for header 
 */
+
+@import 'variables';
+@import 'mixins';
+
 .user_header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include flexbox(column, center, center);
   padding-top: 120px;
   height: 520px;
   width: 100vw;
-  background-color: #369096;
+  background-color: $aqua-color; 
   background-image: url("../images/brick-wall-dark.png");
 }
 
 /* Desktop styles */
 @media only screen and (min-width: 1024px) {
+  
+
   .user_header {
-    background-color: #4056A1;
-    color: white;
+    background-color: $blue-color;
+    color: $white-color;
   }
 }

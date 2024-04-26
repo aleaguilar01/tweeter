@@ -6,7 +6,6 @@
 html {
   box-sizing: border-box;
 }
-
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -14,16 +13,22 @@ html {
 /*
  * Global layout 
  */
+
+ @import 'variables';
+
+
 body {
-  color: #545149;
-  background-color: #f4f1ec;
+  color: $font-color;
+  background-color: $background-color;
   font-size: 24px;
-  font-family: "Source Sans 3", sans-serif;
+  font-family: $font;
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+
 /**
 * Styling for main
 */
@@ -33,6 +38,7 @@ body {
   margin: 0 auto;
 }
 
+
 /* /* Tablet Styles */
 @media only screen and (min-width: 768px) {
   body {
@@ -40,10 +46,13 @@ body {
     padding-top: 120px;
     justify-content: space-around;
   }
-  header {
+   header {
     margin: 5%;
-  }
-  .container {
+   }
+
+   .container {
     margin: 5%;
-  }
+   }
 }
+
+

@@ -1,7 +1,12 @@
 /**
 * Styling for the tweets 
 */
-.tweet {
+
+//////////////////////////////////////////VARIABLES//////////////////////////////////////////////////////
+
+@import 'variables';
+
+.tweet{
   margin-bottom: 5%;
   border: black 0.1em solid;
   padding: 5%;
@@ -9,14 +14,14 @@
 }
 
 .tweet:hover {
-  box-shadow: 10px 10px rgba(33, 33, 33, 0.2);
+  box-shadow: 10px 10px rgba(33,33,33,.2); 
   transition: color 0.3s ease;
 }
 
 .tweet header {
   display: flex;
   justify-content: space-between;
-  color: #630d63;
+  color: $purple-color
 }
 
 .profile {
@@ -39,6 +44,7 @@
 }
 
 .tweet footer {
+
   display: flex;
   justify-content: space-between;
   border-top: solid black 0.1em;
@@ -50,5 +56,5 @@
 }
 
 .tweet footer div :hover {
-  color: #630d63;
+  color:$purple-color
 }
