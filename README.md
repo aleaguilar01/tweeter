@@ -23,12 +23,16 @@ Tweeter is a simple, single-page-application web responsive Twitter clone.
 
 ## Screenshots 
 
+- Cellphone display
 !["Cellphone display"](https://github.com/aleaguilar01/tweeter/blob/master/docs/Cellphone%20display.gif?raw=true)
 
+- Tablet display
 !["Tablet display"](https://github.com/aleaguilar01/tweeter/blob/master/docs/Tablet%20display.gif?raw=true)
 
+- Laptop display
 !["Laptop display"](https://github.com/aleaguilar01/tweeter/blob/master/docs/Laptop%20display.gif?raw=true)
 
+- New tweet button
 !["New tweet button"](https://github.com/aleaguilar01/tweeter/blob/master/docs/New%20Tweet%20button.gif?raw=true)
 
 ## Stretch Work
