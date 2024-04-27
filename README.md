@@ -29,7 +29,7 @@ Tweeter is a simple, single-page-application web responsive Twitter clone.
 - Tablet display
 !["Tablet display"](https://github.com/aleaguilar01/tweeter/blob/master/docs/Tablet%20display.gif?raw=true)
 
-- Laptop display
+- Desktop display
 !["Laptop display"](https://github.com/aleaguilar01/tweeter/blob/master/docs/Laptop%20display.gif?raw=true)
 
 - New tweet button
